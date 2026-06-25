@@ -57,11 +57,11 @@ import { onMounted, ref } from 'vue';
 import type { LightGuideViewerApi } from '@/projects/lightguide';
 import BeamWorkspace from '../components/BeamWorkspace.vue';
 import { useI18n } from '../i18n';
-import * as api from '../mock/api';
+import * as api from '../api/client';
 import { Store, store } from '../store';
 import { toast } from '../composables/useToast';
 import { useWorkflowNav } from '../composables/useWorkflow';
-import type { ComponentFull, ProjectionStatus, SecondaryDTO, SlotDTO } from '../mock/types';
+import type { ComponentFull, ProjectionStatus, SecondaryDTO, SlotDTO } from '../api/types';
 
 const { t } = useI18n();
 const { gotoStep, router } = useWorkflowNav();

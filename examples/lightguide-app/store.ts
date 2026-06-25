@@ -3,8 +3,8 @@
    selected project persist in localStorage so a reload restores the in-flight
    workflow. */
 import { reactive } from 'vue';
-import * as api from './mock/api';
-import type { ComponentFull, ProjectDetail, Project, SessionDTO, SlotDTO } from './mock/types';
+import * as api from './api/client';
+import type { ComponentFull, ProjectDetail, Project, SessionDTO, SlotDTO } from './api/types';
 import type { PreviewMode } from '@/projects/lightguide';
 
 interface StoreState {

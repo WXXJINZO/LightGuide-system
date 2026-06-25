@@ -45,11 +45,11 @@ import { onMounted, reactive, ref, watch } from 'vue';
 import type { AssemblyFace, HeadTail, LightGuideViewerApi } from '@/projects/lightguide';
 import BeamWorkspace from '../components/BeamWorkspace.vue';
 import { useI18n } from '../i18n';
-import * as api from '../mock/api';
+import * as api from '../api/client';
 import { Store, store } from '../store';
 import { toast } from '../composables/useToast';
 import { useWorkflowNav } from '../composables/useWorkflow';
-import type { SlotDTO } from '../mock/types';
+import type { SlotDTO } from '../api/types';
 
 const { t } = useI18n();
 const { gotoStep, router } = useWorkflowNav();

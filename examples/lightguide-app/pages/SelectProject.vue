@@ -79,10 +79,10 @@
 import { onMounted, ref } from 'vue';
 import { useI18n } from '../i18n';
 import { Store, store } from '../store';
-import * as api from '../mock/api';
+import * as api from '../api/client';
 import { toast } from '../composables/useToast';
 import { useWorkflowNav } from '../composables/useWorkflow';
-import type { ProjectStatus } from '../mock/types';
+import type { ProjectStatus } from '../api/types';
 
 const { t } = useI18n();
 const { gotoStep } = useWorkflowNav();

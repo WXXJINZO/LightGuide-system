@@ -4,7 +4,7 @@
    expects `LightGuideModel`, so we map the fields and stringify the secondary id
    (the facade's selection/BOM linkage is keyed by string id). */
 import type { LightGuideModel, SecondaryPart } from '@/projects/lightguide';
-import type { ComponentFull, SlotDTO } from './mock/types';
+import type { ComponentFull, SlotDTO } from './api/types';
 
 export function componentToModel(comp: ComponentFull, slot?: SlotDTO | null): LightGuideModel {
     const secondary: SecondaryPart[] = (comp.secondary || []).map((s) => ({

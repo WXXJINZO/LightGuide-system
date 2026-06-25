@@ -111,7 +111,7 @@ import type { Deviation, LightGuideViewerApi, PreviewMode } from '@/projects/lig
 import { componentToModel } from '../adapter';
 import { useI18n } from '../i18n';
 import { Store, store } from '../store';
-import type { ComponentFull, SlotDTO } from '../mock/types';
+import type { ComponentFull, SlotDTO } from '../api/types';
 
 export interface SlotDecor {
     line: string;

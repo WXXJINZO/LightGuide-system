@@ -12,7 +12,6 @@ yarn.lock
 yalc.lock
 node_modules
 dist
-mock
 dist-ssr
 *.local
 
@@ -26,12 +25,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-lib
+# 仅忽略仓库根的库构建产物，避免误伤 server/src/lib（IFC 内核等）
+/lib
 .webcad
 .taskmaster
 docs
 tests
 .claude
+
+# LightGuide 后端 SQLite 运行时数据（schema/seed 在 server/src/db 内，数据库文件不入库）
+server/data/
 
 # 本地 HTTPS dev server 自签名证书 / 私钥（不入库，按需自行生成）
 key.pem

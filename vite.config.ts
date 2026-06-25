@@ -46,8 +46,13 @@ export default ({ mode }) => {
             // include: ['@fs/fscadweb']  // 列出需要包含 sourcemap 的依赖
         },
         server: {
+            // Forward the LightGuide demo app's REST calls to the backend in
+            // server/ (default PORT 4178). Run both: `npm run server` + `npm run dev`.
             proxy: {
-
+                '/api': {
+                    target: 'http://127.0.0.1:4178',
+                    changeOrigin: true
+                }
             },
             cors: true,
             headers: {

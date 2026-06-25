@@ -68,7 +68,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from '../i18n';
-import * as api from '../mock/api';
+import * as api from '../api/client';
 import { Store, store } from '../store';
 import { toast } from '../composables/useToast';
 import { useWorkflowNav } from '../composables/useWorkflow';

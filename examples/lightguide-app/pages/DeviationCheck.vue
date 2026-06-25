@@ -36,11 +36,11 @@
 import { onMounted, ref } from 'vue';
 import BeamWorkspace from '../components/BeamWorkspace.vue';
 import { useI18n } from '../i18n';
-import * as api from '../mock/api';
+import * as api from '../api/client';
 import { Store, store } from '../store';
 import { toast } from '../composables/useToast';
 import { useWorkflowNav } from '../composables/useWorkflow';
-import type { CheckResult, SlotDTO } from '../mock/types';
+import type { CheckResult, SlotDTO } from '../api/types';
 
 const { t } = useI18n();
 const { gotoStep, router } = useWorkflowNav();

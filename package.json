@@ -7,9 +7,17 @@
   "scripts": {
     "dev": "vite --force --host --mode development",
     "build": "vite build --mode @fsdev --emptyOutDir",
-    "lint": "eslint src/**/*.ts --fix"
+    "lint": "eslint src/**/*.ts --fix",
+    "server": "node server/src/index.js",
+    "server:dev": "node --watch server/src/index.js",
+    "seed": "node server/src/db/seed.js",
+    "test:server": "node --test server/test/unit/*.test.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2"
+  },
   "devDependencies": {
     "@fscut/bochui": "^3.0.5",
     "@fscut/element-plus": "^2.7.4",

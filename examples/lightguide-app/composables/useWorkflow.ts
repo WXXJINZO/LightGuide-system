@@ -1,7 +1,7 @@
 /* Workflow navigation — the 5-step state machine's routing + reachability,
    ported from the reference app.js (ROUTE_STEP / stepReachable / gotoStep). */
 import { useRouter } from 'vue-router';
-import * as api from '../mock/api';
+import * as api from '../api/client';
 import { Store, store } from '../store';
 
 export const STEP_ROUTE: Record<number, string> = {
