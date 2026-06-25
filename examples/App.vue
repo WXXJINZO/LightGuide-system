@@ -14,7 +14,7 @@ import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
 
-const showBackButton = computed(() => route.path !== '/');
+const showBackButton = computed(() => route.path !== '/' && !route.path.startsWith('/lightguide'));
 
 const goBack = () => {
     router.push('/');

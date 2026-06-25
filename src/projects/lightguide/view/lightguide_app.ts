@@ -32,7 +32,8 @@ export class LightGuideApp extends WebCadApiBase<LightGuideCmdParamTypes> {
         }
 
         if (this._views.has(viewKey)) {
-            throw new Error(`View with key "${viewKey}" already exists.`);
+            await this._app!.addView(container, BeamCanvas as any, viewKey, options?.configOptions ?? options);
+            return this._views.get(viewKey) as BeamViewHandle;
         }
         const viewHandle = await this.createViewHandle(viewKey, container, options);
         this._views.set(viewKey, viewHandle);
@@ -41,9 +42,29 @@ export class LightGuideApp extends WebCadApiBase<LightGuideCmdParamTypes> {
     }
 
     protected async createViewHandle(viewKey: string, domElement: HTMLElement, configOptions?: any): Promise<BeamViewHandle> {
-        const view = await this._app!.createView(viewKey, BeamCanvas as any, { domElement, app: this._app, configOptions });
+        const view = await this._app!.addView(domElement, BeamCanvas as any, viewKey, configOptions?.configOptions ?? configOptions);
 
         return new BeamViewHandle(viewKey, view as BeamCanvas);
+    }
+
+    /**
+     * 仅释放当前 renderer，保留底座 view / handle 注册。
+     * 用于 Vue 路由切换后把同一个 WebCAD view 迁移到新的 DOM 宿主。
+     */
+    public async detachViewRender(viewKey: string): Promise<void> {
+        if (!this._app?.getViewByTag(viewKey)) return;
+        const originalError = console.error;
+        console.error = (...args: unknown[]) => {
+            const text = args.map((arg) => String(arg)).join(' ');
+            if (text.includes('webglcontextlost') || text.includes("Cannot read properties of undefined (reading 'viewObj')")) return;
+            originalError(...args);
+        };
+        try {
+            this._app.destroyView(viewKey);
+            await new Promise((resolve) => setTimeout(resolve, 50));
+        } finally {
+            console.error = originalError;
+        }
     }
 
     /**

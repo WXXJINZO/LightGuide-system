@@ -13,7 +13,12 @@
             <div class="demo-card" @click="navigateTo('/lightguide')">
                 <div class="card-icon">🏗️</div>
                 <h2>LightGuide</h2>
-                <p>钢构装配激光投影 CAD View</p>
+                <p>钢构装配激光投影系统完整五步前端</p>
+            </div>
+            <div class="demo-card" @click="navigateTo('/lightguide-cad')">
+                <div class="card-icon">📐</div>
+                <h2>LightGuide CAD</h2>
+                <p>独立 WebCAD 视图调试页</p>
             </div>
         </div>
     </div>
