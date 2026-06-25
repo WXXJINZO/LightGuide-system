@@ -47,11 +47,11 @@ export function buildBeam(sec: BeamSection): { object: THREE.Group; meshes: THRE
         group.add(edge);
     }
 
-    // 头端标记：H 型钢左右对称，加一个端帽让头尾翻转可见。
-    const capR = Math.max(sec.b, sec.h) * 0.12;
+    // 头端标记：H 型钢左右对称，加一个小端帽让头尾翻转可见（对齐原型蓝色头标记）。
+    const capR = Math.max(sec.b, sec.h) * 0.06;
     const cap = new THREE.Mesh(
         new THREE.SphereGeometry(capR, 16, 16),
-        new THREE.MeshStandardMaterial({ color: COL.head, metalness: 0.2, roughness: 0.5, emissive: 0x4a2200 })
+        new THREE.MeshStandardMaterial({ color: COL.head, metalness: 0.2, roughness: 0.5, emissive: 0x0a1838 })
     );
     cap.position.set(0, 0, sec.h + capR);
 
@@ -165,12 +165,12 @@ export function buildAxes(sec: BeamSection): THREE.Group {
 function makeTextPlane(text: string, heightMm: number): { mesh: THREE.Mesh; widthMm: number } {
     const pxH = 96;
     const ctx = document.createElement('canvas').getContext('2d')!;
-    ctx.font = `700 ${Math.round(pxH * 0.66)}px Inter, sans-serif`;
+    ctx.font = `700 ${Math.round(pxH * 0.66)}px 'IBM Plex Mono', monospace`;
     const tw = Math.ceil(ctx.measureText(text).width) + 18;
     const c = ctx.canvas;
     c.width = tw;
     c.height = pxH;
-    ctx.font = `700 ${Math.round(pxH * 0.66)}px Inter, sans-serif`;
+    ctx.font = `700 ${Math.round(pxH * 0.66)}px 'IBM Plex Mono', monospace`;
     ctx.fillStyle = '#ffffff';
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'left';
